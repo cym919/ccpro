@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CCPro - 高级云日历</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    @font-face {
+      font-family: "Dingtalk";
+      src: url("font/DingTalkJinBuTi.ttf") format("truetype");
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "MiSans-Demiblod";
+      src: url("font/MiSans-Demibold.ttf") format("truetype");
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "MiSans-Regular";
+      src: url("font/MiSans-Regular.ttf") format("truetype");
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Caos";
+      src: url("font/Caos.otf") format("opentype");
+      font-display: swap;
+    }
+
+    :root {
+      --primary-color: #00ff9d;
+      --bg-color: #1a1a1a;
+      --text-color: #ffffff;
+      --nav-bg: rgba(40, 40, 40, 0.7);
+      --card-bg: rgba(255, 255, 255, 0.15);
+      --footer-bg: rgba(40, 40, 40, 1);
+      --icon-color: #ffffff;
+      --bg-image: url("img/bg-dark.jpg");
+    }
+
+    :root[data-theme="light"] {
+      --primary-color: #0066ff;
+      --bg-color: #f5f5f5;
+      --text-color: #333333;
+      --nav-bg: rgba(255, 255, 255, 0.7);
+      --card-bg: rgba(0, 0, 0, 0.05);
+      --footer-bg: rgba(255, 255, 255, 1);
+      --icon-color: #333333;
+      --bg-image: url("img/bg-light.jpg");
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      color: var(--text-color);
+      min-height: 100vh;
+      background: var(--bg-image) no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.3s ease;
+    }
+
+    /* 导航栏样式 */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .nav-section {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    /* Logo链接 */
+    .logo-link {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-family: Caos;
+    }
+
+    /* 导航按钮 */
+    .nav-buttons {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      padding: 0.5rem 0;
+      font-family: MiSans-Demiblod;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color);
+    }
+
+    .nav-link:hover .nav-icon {
+      fill: var(--primary-color);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* 图标样式 */
+    .nav-icon {
+      width: 20px;
+      height: 20px;
+      fill: var(--icon-color);
+      transition: fill 0.3s ease;
+    }
+
+    /* 外部链接 */
+    .external-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      font-family: 'MiSans-Demiblod';
+    }
+
+    .external-link {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .external-link:hover {
+      color: var(--primary-color);
+    }
+
+    .external-link:hover .nav-icon {
+      fill: var(--primary-color);
+    }
+
+    .external-link::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+
+    .external-link:hover::after {
+      width: 100%;
+    }
+
+    /* 卡片布局 */
+    main {
+      margin-top: 6rem;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      flex: 1;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-radius: 15px;
+      padding: 1.5rem;
+      min-height: 200px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .card.wide {
+      grid-column: span 2;
+    }
+
+    /* 页脚样式 */
+    footer {
+      background: var(--footer-bg);
+      padding: 2rem;
+      text-align: center;
+      font-family: 'MiSans-Regular';
+      margin-top: auto;
+      transition: background 0.3s ease;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-link {
+      color: var(--text-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .footer-link:hover {
+      color: var(--primary-color);
+    }
+
+    .copyright {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* 主题切换按钮 */
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .theme-icon {
+      width: 20px;
+      height: 20px;
+      fill: var(--icon-color);
+      transition: fill 0.3s ease;
+    }
+
+    .theme-icon:hover {
+      fill: var(--primary-color);
+    }
+
+    /* 响应式布局 */
+    @media (max-width: 768px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      .card.wide {
+        grid-column: span 1;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    .card-title {
+      font-family: MiSans-Demiblod;
+    }
+
+    .card-text {
+      font-family: MiSans-Regular;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-section">
+      <a href="/" class="logo-link">CCPro</a>
+      <div class="nav-buttons">
+        <a href="#" class="nav-link">
+          <svg class="nav-icon" viewBox="0 0 24 24">
+            <path
+              d="M13.228 2.688a2 2 0 0 0-2.456 0l-8.384 6.52C1.636 9.795 2.05 11 3.003 11H4v8a2 2 0 0 0 2 2h4v-6a2 2 0 1 1 4 0v6h4a2 2 0 0 0 2-2v-8h.997c.952 0 1.368-1.205.615-1.791z" />
+          </svg>
+          <span>首页</span>
+        </a>
+        <a href="#" class="nav-link">
+          <svg class="nav-icon" viewBox="0 0 24 24">
+            <path
+              d="m11.514 2.142-1.26-.755-.24 1.449C9.632 5.124 8.069 7.25 6.345 8.744 2.97 11.67 2.231 14.85 3.276 17.475c1 2.512 3.538 4.232 6.114 4.519l.596.066c-1.474-.901-2.42-3.006-2.09-4.579.326-1.546 1.438-2.994 3.574-4.33l1.077-.672.402 1.205c.237.712.647 1.284 1.064 1.865.2.28.403.563.589.864.643 1.045.813 2.207.398 3.36-.378 1.048-1.001 1.872-1.86 2.329l.97-.108c2.418-.269 4.193-1.096 5.346-2.479C20.599 18.144 21 16.379 21 14.5c0-1.75-.719-3.554-1.567-5.055-.994-1.758-2.291-3.218-3.707-4.633-.245.49-.226.688-.73 1.475a8.146 8.146 0 0 0-3.482-4.145" />
+          </svg>
+          <span>热搜</span>
+        </a>
+        <a href="#" class="nav-link">
+          <svg class="nav-icon" viewBox="0 0 24 24">
+            <path
+              d="M20 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm0 2H4v10.1l4.995-4.994a1.25 1.25 0 0 1 1.768 0l4.065 4.066 1.238-1.238a1.25 1.25 0 0 1 1.768 0L20 15.101zm-4.5 2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3" />
+          </svg>
+          <span>图片</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="external-links">
+        <a href="#" class="external-link">
+          外部链接
+          <span style="font-size: 0.8em">↗</span>
+        </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <svg class="theme-icon" id="themeIcon" viewBox="0 0 24 24">
+            <path
+              d="M3.936 8H3a1 1 0 0 0 0 2h.223a9 9 0 0 0 16.841 6H21a1 1 0 1 0 0-2h-.223A9 9 0 0 0 3.936 8m2.319 0a7 7 0 0 1 12.455 6H9.5a.5.5 0 0 1 0-1h2a2.5 2.5 0 0 0 0-5zm11.49 8A7 7 0 0 1 5.29 10h6.21a.5.5 0 0 1 0 1h-2a2.5 2.5 0 0 0 0 5z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="card wide">
+      <h2 class="card-title">欢迎来到本网站</h2>
+      <p class="card-text">这是一个高级的日历网站</p>
+    </div>
+    <div class="card">
+      <h3 class="card-title">公告</h3>
+      <p class="card-text">左侧窄栏内容</p>
+    </div>
+    <div class="card">
+      <h3 class="card-title">分栏2</h3>
+      <p class="card-text">中间中等宽度内容中间中等宽度内容</p>
+    </div>
+    <div class="card">
+      <h3 class="card-title">分栏3</h3>
+      <p class="card-text">右侧宽栏内容</p>
+    </div>
+    <div class="card wide">
+      <h2 class="card-title">欢迎来到本网站</h2>
+      <p class="card-text">这是一个现代风格的网站设计示例</p>
+    </div>
+    <div class="card wide">
+      <h2 class="card-title">欢迎来到本网站</h2>
+      <p class="card-text">这是一个现代风格的网站设计示例</p>
+    </div>
+    <div class="card">
+      <h3 class="card-title">分栏3</h3>
+      <p class="card-text">右侧宽栏内容</p>
+    </div>
+    <div class="card">
+      <h3 class="card-title">分栏3</h3>
+      <p class="card-text">右侧宽栏内容</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="#" class="external-link">关于本站</a>
+        <a href="#" class="external-link">使用说明</a>
+        <a href="#" class="external-link">赞助支持</a>
+        <a href="#" class="external-link">联系我们</a>
+      </div>
+      <div class="copyright">
+        &copy; 2025 CCPro Project Team.&nbsp;根据 MIT 许可证发布.
+      </div>
+      <div class="footer-links">
+        <a href="#" class="footer-link">项目仓库</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const html = document.documentElement;
+
+    // 检查本地存储中的主题设置
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    if (currentTheme === 'light') {
+      html.setAttribute('data-theme', 'light');
+      themeIcon.querySelector("path").setAttribute('d',"M13.44 2.13a1 1 0 0 0-1.055 1.465 5 5 0 0 1-6.79 6.79A1 1 0 0 0 4.13 11.44a7.95 7.95 0 0 0 .641 1.989 1 1 0 0 0 1.896-.556 7 7 0 0 0 8.22-8.134 6 6 0 0 1 2.537 7.832 1 1 0 1 0 1.807.858 8.002 8.002 0 0 0-5.79-11.3ZM3 16a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1m3 4a1 1 0 0 1 1-1h10a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1");
+    }
+
+    // 切换主题
+    themeToggle.addEventListener('click', () => {
+      if (html.getAttribute('data-theme') === 'light') { //浅色模式
+        html.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
+        themeIcon.querySelector("path").setAttribute('d',"M3.936 8H3a1 1 0 0 0 0 2h.223a9 9 0 0 0 16.841 6H21a1 1 0 1 0 0-2h-.223A9 9 0 0 0 3.936 8m2.319 0a7 7 0 0 1 12.455 6H9.5a.5.5 0 0 1 0-1h2a2.5 2.5 0 0 0 0-5zm11.49 8A7 7 0 0 1 5.29 10h6.21a.5.5 0 0 1 0 1h-2a2.5 2.5 0 0 0 0 5z"); //改变主题图标path中的d属性值
+      } else { //深色模式
+        html.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        themeIcon.querySelector("path").setAttribute('d',"M13.44 2.13a1 1 0 0 0-1.055 1.465 5 5 0 0 1-6.79 6.79A1 1 0 0 0 4.13 11.44a7.95 7.95 0 0 0 .641 1.989 1 1 0 0 0 1.896-.556 7 7 0 0 0 8.22-8.134 6 6 0 0 1 2.537 7.832 1 1 0 1 0 1.807.858 8.002 8.002 0 0 0-5.79-11.3ZM3 16a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1m3 4a1 1 0 0 1 1-1h10a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1");
+      }
+    });
+  </script>
+</body>
+
+</html>

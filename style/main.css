@@ -1,0 +1,308 @@
+@font-face {
+    font-family: "Dingtalk";
+    src: url("/font/DingTalkJinBuTi.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "MiSans-Demiblod";
+    src: url("/font/MiSans-Demibold.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "MiSans-Regular";
+    src: url("/font/MiSans-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Caos";
+    src: url("/font/Caos.otf") format("opentype");
+    font-display: swap;
+}
+
+:root {
+    --primary-color: #00ff9d;
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --nav-bg: rgba(40, 40, 40, 0.7);
+    --card-bg: rgba(255, 255, 255, 0.15);
+    --footer-bg: rgba(40, 40, 40, 1);
+    --icon-color: #ffffff;
+    --bg-image: url("/img/bg-dark.jpg");
+}
+
+:root[data-theme="light"] {
+    --primary-color: #0066ff;
+    --bg-color: #f5f5f5;
+    --text-color: #333333;
+    --nav-bg: rgba(255, 255, 255, 0.7);
+    --card-bg: rgba(0, 0, 0, 0.05);
+    --footer-bg: rgba(255, 255, 255, 1);
+    --icon-color: #333333;
+    --bg-image: url("/img/bg-light.jpg");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: var(--text-color);
+    min-height: 100vh;
+    background: var(--bg-image) no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.3s ease;
+}
+
+/* 导航栏样式 */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.nav-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Logo链接 */
+.logo-link {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-family: Caos;
+}
+
+/* 导航按钮 */
+.nav-buttons {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    font-family: MiSans-Demiblod;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-link:hover .nav-icon {
+    fill: var(--primary-color);
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* 图标样式 */
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    fill: var(--icon-color);
+    transition: fill 0.3s ease;
+}
+
+/* 外部链接 */
+.external-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    font-family: 'MiSans-Demiblod';
+}
+
+.external-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.external-link:hover {
+    color: var(--primary-color);
+}
+
+.external-link:hover .nav-icon {
+    fill: var(--primary-color);
+}
+
+.external-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.external-link:hover::after {
+    width: 100%;
+}
+
+/* 卡片布局 */
+main {
+    margin-top: 6rem;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    flex: 1;
+}
+
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 15px;
+    padding: 1.5rem;
+    min-height: 200px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.card.wide {
+    grid-column: span 2;
+}
+
+.card.big {
+    grid-column: span 3;
+}
+
+.card.huge {
+    grid-column: span 4;
+}
+
+/* 页脚样式 */
+footer {
+    background: var(--footer-bg);
+    padding: 2rem;
+    text-align: center;
+    font-family: 'MiSans-Regular';
+    margin-top: auto;
+    transition: background 0.3s ease;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-link {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.footer-link:hover {
+    color: var(--primary-color);
+}
+
+.copyright {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* 主题切换按钮 */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.theme-icon {
+    width: 20px;
+    height: 20px;
+    fill: var(--icon-color);
+    transition: fill 0.3s ease;
+}
+
+.theme-icon:hover {
+    fill: var(--primary-color);
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    .card.wide {
+        grid-column: span 1;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+.card-title {
+    font-family: MiSans-Demiblod;
+}
+
+.card-text {
+    font-family: MiSans-Regular;
+}

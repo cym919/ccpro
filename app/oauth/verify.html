@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CCPro OAuth认证</title>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/style/main.css" />
+  <script src="/scr/main.js" defer></script>
+  <script src="verify.js" defer></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-section">
+      <a href="/" class="logo-link">CCPro</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="external-links">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <svg class="theme-icon" id="themeIcon" viewBox="0 0 24 24">
+            <path
+              d="M3.936 8H3a1 1 0 0 0 0 2h.223a9 9 0 0 0 16.841 6H21a1 1 0 1 0 0-2h-.223A9 9 0 0 0 3.936 8m2.319 0a7 7 0 0 1 12.455 6H9.5a.5.5 0 0 1 0-1h2a2.5 2.5 0 0 0 0-5zm11.49 8A7 7 0 0 1 5.29 10h6.21a.5.5 0 0 1 0 1h-2a2.5 2.5 0 0 0 0 5z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="card huge">
+      <h3 class="card-title">认证结果</h3>
+      <p class="card-text">授权码：<span id="authCode"></span></p>
+      <button id="copyBtn" class="btn">复制授权码</button>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="#" class="external-link">关于本站</a>
+        <a href="#" class="external-link">使用说明</a>
+        <a href="#" class="external-link">赞助支持</a>
+        <a href="#" class="external-link">联系我们</a>
+      </div>
+      <div class="copyright">
+        &copy; 2025 CCPro Project Team.&nbsp;根据 MIT 许可证发布.
+      </div>
+      <div class="footer-links">
+        <a href="#" class="footer-link">项目仓库</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

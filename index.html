@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CCPro - 高级云日历</title>
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <style>
     @font-face {
       font-family: "Dingtalk";
@@ -220,6 +220,14 @@
       grid-column: span 2;
     }
 
+    .card.big {
+      grid-column: span 3;
+    }
+    
+    .card.huge {
+      grid-column: span 4;
+    }
+
     /* 页脚样式 */
     footer {
       background: var(--footer-bg);
@@ -368,15 +376,15 @@
       <h3 class="card-title">分栏2</h3>
       <p class="card-text">中间中等宽度内容中间中等宽度内容</p>
     </div>
-    <div class="card">
+    <div class="card huge">
       <h3 class="card-title">分栏3</h3>
       <p class="card-text">右侧宽栏内容</p>
     </div>
-    <div class="card wide">
+    <div class="card big">
       <h2 class="card-title">欢迎来到本网站</h2>
       <p class="card-text">这是一个现代风格的网站设计示例</p>
     </div>
-    <div class="card wide">
+    <div class="card">
       <h2 class="card-title">欢迎来到本网站</h2>
       <p class="card-text">这是一个现代风格的网站设计示例</p>
     </div>

@@ -283,28 +283,36 @@ footer {
     fill: var(--primary-color);
 }
 
-/* 响应式布局 */
-@media (max-width: 768px) {
-    main {
-        grid-template-columns: 1fr;
-    }
-
-    .card.wide {
-        grid-column: span 1;
-    }
-
-    .footer-links {
-        flex-direction: column;
-        gap: 1rem;
-    }
-}
-
 .card-title {
     font-family: MiSans-Demiblod;
+    margin-bottom: 1rem;
 }
 
 .card-text {
     font-family: MiSans-Regular;
+    margin-top: 0.5rem;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 1.5rem 0 1rem;
+    scroll-margin-top: 6rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+h2 {
+    font-size: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
 }
 
 .btn {
@@ -330,4 +338,34 @@ footer {
 .btn:active {
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.image-caption {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-top: 0.5rem;
+}
+
+/*其他样式...*/
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    .card.wide {
+        grid-column: span 1;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }

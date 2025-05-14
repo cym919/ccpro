@@ -1,0 +1,32 @@
+/* 时间卡片特定样式 */
+.time-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  #time {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-family: 'MiSans-Demiblod';
+  }
+  
+  #date {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    font-family: 'MiSans-Regular';
+  }
+  
+  @media (max-width: 768px) {
+    #time {
+      font-size: 2rem;
+    }
+    #date {
+      font-size: 1rem;
+    }
+  }

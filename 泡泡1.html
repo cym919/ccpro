@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间与天气</title>
+    
+    <!-- 引入天气图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css">
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f2f5;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem 4rem;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        #time {
+            font-size: 4rem;
+            font-weight: 300;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        #date {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .weather {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .weather-icon {
+            font-size: 2.5rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            #time {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="time">00:00:00</div>
+        <div id="date">2023年1月1日 星期一</div>
+        <div class="weather">
+            <i class="weather-icon wi wi-day-sunny"></i>
+            <span>晴 25℃</span>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            
+            // 格式化时间
+            const time = now.toLocaleTimeString('zh-CN', { hour12: false });
+            
+            // 格式化日期
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                weekday: 'long' 
+            };
+            const date = now.toLocaleDateString('zh-CN', options);
+            
+            // 更新DOM元素
+            document.getElementById('time').textContent = time;
+            document.getElementById('date').textContent = date;
+        }
+
+        // 初始加载时立即更新时间
+        updateTime();
+        // 每秒更新一次时间
+        setInterval(updateTime, 1000);
+
+        // 实际项目中这里可以添加天气API调用代码
+        // 示例中使用静态天气数据，实际使用时需要替换为API调用
+    </script>
+</body>
+</html>

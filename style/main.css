@@ -22,6 +22,12 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "JetBrainsMonoNL-Regular";
+    src: url("/font/JetBrainsMonoNL-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
 :root {
     --primary-color: #00ff9d;
     --bg-color: #1a1a1a;

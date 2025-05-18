@@ -7,8 +7,11 @@
   <title>CCPro - 高级云日历</title>
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/style/main.css" type="text/css" />
-  <link rel="stylesheet" href="/style/time.css" type="text/css" />
+  <link rel="stylesheet" href="/style/weather.css" type="text/css" />
+  <!-- 引入图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <script src="/js/main.js" defer></script>
+  <script src="/js/weather.js" defer></script>
 </head>
 
 <body>
@@ -55,43 +58,12 @@
       </div>
     </div>
   </nav>
-
-  <main>
-    <div class="card">
-      <h3 class="card-title">时间</h3>
-      <div class="time-container">
-        <div id="time">00:00:00</div>
-        <div id="date">2025年1月1日 星期一</div>
-      </div>
+  <div class="alert-list">
+    <h3 class="card-title">实时天气预警</h3>
+    <div id="alertContainer" class="loading">
+      <div class="loading-spinner"></div>
     </div>
-    <div class="card wide">
-      <h3 class="card-title">公告</h3>
-    </div>
-    <div class="card">
-      <h3 class="card-title">分栏2</h3>
-      <p class="card-text">中间中等宽度内容中间中等宽度内容</p>
-    </div>
-    <div class="card huge">
-      <h3 class="card-title">分栏3</h3>
-      <p class="card-text">右侧宽栏内容</p>
-    </div>
-    <div class="card big">
-      <h2 class="card-title">欢迎来到本网站</h2>
-      <p class="card-text">这是一个现代风格的网站设计示例</p>
-    </div>
-    <div class="card">
-      <h2 class="card-title">欢迎来到本网站</h2>
-      <p class="card-text">这是一个现代风格的网站设计示例</p>
-    </div>
-    <div class="card">
-      <h3 class="card-title">分栏3</h3>
-      <p class="card-text">右侧宽栏内容</p>
-    </div>
-    <div class="card">
-      <h3 class="card-title">分栏3</h3>
-      <p class="card-text">右侧宽栏内容</p>
-    </div>
-  </main>
+  </div>
 
   <footer>
     <div class="footer-content">
@@ -109,33 +81,6 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    function updateTime() {
-      const now = new Date();
-      
-      // 格式化时间
-      const time = now.toLocaleTimeString('zh-CN', { hour12: false });
-      
-      // 格式化日期
-      const options = { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric', 
-        weekday: 'long' 
-      };
-      const date = now.toLocaleDateString('zh-CN', options);
-      
-      // 更新DOM元素
-      document.getElementById('time').textContent = time;
-      document.getElementById('date').textContent = date;
-    }
-
-    // 初始加载时立即更新时间
-    updateTime();
-    // 每秒更新一次时间
-    setInterval(updateTime, 1000);
-  </script>
 </body>
 
 </html>

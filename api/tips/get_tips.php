@@ -1,5 +1,5 @@
 <?php
-$file_path = __DIR__ . 'gonggao.servertxt';
+$file_path = __DIR__ . 'tips.servertxt';
 
 // 检查文件是否存在
 if (!file_exists($file_path)) {

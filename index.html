@@ -4,11 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CCPro - 高级云日历</title>
+  <title>首页 - CCPro</title>
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/style/main.css" type="text/css" />
   <link rel="stylesheet" href="/style/time.css" type="text/css" />
+  <link rel="stylesheet" href="/style/weather.css" type="text/css" />
   <script src="/js/main.js" defer></script>
+  <script src="/js/weather.js" defer></script>
+  <script src="/js/time.js" defer></script>
 </head>
 
 <body>
@@ -64,8 +67,17 @@
         <div id="date">2025年1月1日 星期一</div>
       </div>
     </div>
-    <div class="card wide">
-      <h3 class="card-title">公告</h3>
+    <div class="card">
+      <h3 class="card-title">天气</h3>
+      <div class="weather-container">
+        <div class="weather-city" id="weatherCity">正在获取...</div>
+        <div class="weather-info">
+          <div class="weather-type" id="weatherType">-</div>
+          <div class="weather-temp" id="weatherTemp">- ~ -</div>
+          <div class="weather-wind" id="weatherWind">-</div>
+          <div class="weather-aqi" id="weatherAqi">空气质量: -</div>
+        </div>
+      </div>
     </div>
     <div class="card">
       <h3 class="card-title">分栏2</h3>
@@ -109,33 +121,6 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    function updateTime() {
-      const now = new Date();
-      
-      // 格式化时间
-      const time = now.toLocaleTimeString('zh-CN', { hour12: false });
-      
-      // 格式化日期
-      const options = { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric', 
-        weekday: 'long' 
-      };
-      const date = now.toLocaleDateString('zh-CN', options);
-      
-      // 更新DOM元素
-      document.getElementById('time').textContent = time;
-      document.getElementById('date').textContent = date;
-    }
-
-    // 初始加载时立即更新时间
-    updateTime();
-    // 每秒更新一次时间
-    setInterval(updateTime, 1000);
-  </script>
 </body>
 
 </html>

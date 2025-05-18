@@ -31,7 +31,7 @@ if ($_POST['uc'] !== $correct_uc) {
 }
 
 // 更新公告文件
-$gonggao_file = __DIR__ . 'gonggao.servertxt';
+$gonggao_file = __DIR__ . 'tips.servertxt';
 $result = file_put_contents($gonggao_file, $_POST['content']);
 
 if ($result === false) {

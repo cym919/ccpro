@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日图片 - CCPro</title>
+    <link rel="stylesheet" href="/style/main.css">
+    <link rel="stylesheet" href="/style/picture.css">
+    <script src="/js/picture.js" defer></script>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-section">
+            <a href="/" class="logo-link">CCPro</a>
+            <div class="nav-buttons">
+                <a href="/" class="nav-link">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M13.228 2.688a2 2 0 0 0-2.456 0l-8.384 6.52C1.636 9.795 2.05 11 3.003 11H4v8a2 2 0 0 0 2 2h4v-6a2 2 0 1 1 4 0v6h4a2 2 0 0 0 2-2v-8h.997c.952 0 1.368-1.205.615-1.791z" />
+                    </svg>
+                    <span>首页</span>
+                </a>
+                <a href="/hotlist.html" class="nav-link">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <path
+                            d="m11.514 2.142-1.26-.755-.24 1.449C9.632 5.124 8.069 7.25 6.345 8.744 2.97 11.67 2.231 14.85 3.276 17.475c1 2.512 3.538 4.232 6.114 4.519l.596.066c-1.474-.901-2.42-3.006-2.09-4.579.326-1.546 1.438-2.994 3.574-4.33l1.077-.672.402 1.205c.237.712.647 1.284 1.064 1.865.2.28.403.563.589.864.643 1.045.813 2.207.398 3.36-.378 1.048-1.001 1.872-1.86 2.329l.97-.108c2.418-.269 4.193-1.096 5.346-2.479C20.599 18.144 21 16.379 21 14.5c0-1.75-.719-3.554-1.567-5.055-.994-1.758-2.291-3.218-3.707-4.633-.245.49-.226.688-.73 1.475a8.146 8.146 0 0 0-3.482-4.145" />
+                    </svg>
+                    <span>热搜</span>
+                </a>
+                <a href="/picture.html" class="nav-link">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M20 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm0 2H4v10.1l4.995-4.994a1.25 1.25 0 0 1 1.768 0l4.065 4.066 1.238-1.238a1.25 1.25 0 0 1 1.768 0L20 15.101zm-4.5 2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3" />
+                    </svg>
+                    <span>图片</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="nav-section">
+            <div class="external-links">
+                <a href="/weather.html" class="external-link">
+                    外部链接
+                    <span style="font-size: 0.8em">↗</span>
+                </a>
+                <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+                    <svg class="theme-icon" id="themeIcon" viewBox="0 0 24 24">
+                        <path
+                            d="M3.936 8H3a1 1 0 0 0 0 2h.223a9 9 0 0 0 16.841 6H21a1 1 0 1 0 0-2h-.223A9 9 0 0 0 3.936 8m2.319 0a7 7 0 0 1 12.455 6H9.5a.5.5 0 0 1 0-1h2a2.5 2.5 0 0 0 0-5zm11.49 8A7 7 0 0 1 5.29 10h6.21a.5.5 0 0 1 0 1h-2a2.5 2.5 0 0 0 0 5z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="picture-container">
+        <div id="daily-picture" class="daily-picture">
+            <!-- 背景图片将通过JS动态设置 -->
+        </div>
+        <div class="quote-overlay">
+            <div class="quote-content">
+                <div id="daily-quote-zh" class="quote-zh">正在加载每日一言...</div>
+                <div id="daily-quote-en" class="quote-en">Loading daily quote...</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/docs/about.html" class="external-link">关于本站</a>
+                <a href="#" class="external-link">使用说明</a>
+                <a href="#" class="external-link">赞助支持</a>
+                <a href="#" class="external-link">联系我们</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 CCPro Project Team.&nbsp;根据 MIT 许可证发布.
+            </div>
+            <div class="footer-links">
+                <a href="https://gitcode.com/cym919/ccpro" class="footer-link">项目仓库</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

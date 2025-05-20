@@ -1,3 +1,52 @@
+.picture-container {
+    position: relative;
+    height: calc(100vh - 6rem);
+    margin-top: 6rem;
+}
+
+.daily-picture {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.quote-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0);
+}
+
+.quote-content {
+    max-width: 600px;
+    padding: 2rem;
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.quote-zh {
+    font-family: "MiSans-Demiblod";
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.quote-en {
+    font-family: "MiSans-Regular";
+    font-size: 1.1rem;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
 @font-face {
     font-family: "Dingtalk";
     src: url("/font/DingTalkJinBuTi.ttf") format("truetype");
@@ -36,7 +85,6 @@
     --card-bg: rgba(255, 255, 255, 0.15);
     --footer-bg: rgba(40, 40, 40, 1);
     --icon-color: #ffffff;
-    --bg-image: url("/img/bg-dark.jpg");
 }
 
 :root[data-theme="light"] {
@@ -47,7 +95,6 @@
     --card-bg: rgba(0, 0, 0, 0.05);
     --footer-bg: rgba(255, 255, 255, 1);
     --icon-color: #333333;
-    --bg-image: url("/img/bg-light.jpg");
 }
 
 * {
@@ -193,47 +240,11 @@ main {
     margin-top: 6rem;
     padding: 2rem;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     flex: 1;
-}
-
-.card {
-    background: var(--card-bg);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-radius: 15px;
-    padding: 1.5rem;
-    min-height: 200px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    transition: background 0.3s ease, border-color 0.3s ease;
-}
-
-.card.wide {
-    grid-column: span 2;
-}
-
-.card.big {
-    grid-column: span 3;
-}
-
-.card.huge {
-    grid-column: span 4;
-}
-
-.card-title {
-    font-family: MiSans-Demiblod;
-    margin-bottom: 1rem;
-}
-
-.card-text {
-    font-family: MiSans-Regular;
-    margin-top: 0.5rem;
-    line-height: 1.6;
 }
 
 /* 页脚样式 */
@@ -299,45 +310,6 @@ footer {
 .theme-icon:hover {
     fill: var(--primary-color);
 }
-
-.btn {
-    font-family: MiSans-Demiblod;
-    background: var(--primary-color);
-    color: var(--bg-color);
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 1rem;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-    opacity: 0.9;
-}
-
-.btn:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.image-container {
-    text-align: center;
-    margin: 2rem 0;
-}
-
-.image-caption {
-    font-size: 0.9rem;
-    color: var(--text-color);
-    opacity: 0.8;
-    margin-top: 0.5rem;
-}
-
-/*其他样式...*/
 
 /* 响应式布局 */
 @media (max-width: 768px) {

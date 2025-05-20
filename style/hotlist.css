@@ -148,6 +148,7 @@
     --card-bg: rgba(255, 255, 255, 0.15);
     --footer-bg: rgba(40, 40, 40, 1);
     --icon-color: #ffffff;
+    --bg-image: url("/img/bg-dark.jpg");
 }
 
 :root[data-theme="light"] {
@@ -158,6 +159,7 @@
     --card-bg: rgba(0, 0, 0, 0.05);
     --footer-bg: rgba(255, 255, 255, 1);
     --icon-color: #333333;
+    --bg-image: url("/img/bg-light.jpg");
 }
 
 * {

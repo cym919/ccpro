@@ -9,9 +9,11 @@
   <link rel="stylesheet" href="/style/main.css" type="text/css" />
   <link rel="stylesheet" href="/style/time.css" type="text/css" />
   <link rel="stylesheet" href="/style/weather.css" type="text/css" />
+  <link rel="stylesheet" href="/style/calendar.css" type="text/css" />
   <script src="/js/main.js" defer></script>
-  <script src="/js/weather.js" defer></script>
+  <script src="/js/weather-info.js" defer></script>
   <script src="/js/time.js" defer></script>
+  <script src="/js/calendar.js" defer></script>
 </head>
 
 <body>
@@ -45,7 +47,7 @@
 
     <div class="nav-section">
       <div class="external-links">
-        <a href="/weather.html" class="external-link">
+        <a href="#" class="external-link">
           外部链接
           <span style="font-size: 0.8em">↗</span>
         </a>
@@ -68,6 +70,31 @@
       </div>
     </div>
     <div class="card">
+      <h3 class="card-title">分栏2</h3>
+      <p class="card-text">中间中等宽度内容中间中等宽度内容</p>
+    </div>
+    <div class="card">
+      <h3 class="card-title">分栏3</h3>
+      <p class="card-text">右侧宽栏内容</p>
+    </div>
+    
+    <!-- 新增日历卡片 -->
+    <div class="card calendar-card">
+      <div class="calendar-header">
+        <h3 class="card-title" id="monthYear"></h3>
+        <div class="nav-buttons">
+          <button onclick="changeMonth(-1)">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+          </button>
+          <button onclick="changeMonth(1)">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="calendar-grid" id="calendarGrid"></div>
+    </div>
+
+    <div class="card">
       <h3 class="card-title">天气</h3>
       <div class="weather-container">
         <div class="weather-city" id="weatherCity">正在获取...</div>
@@ -75,21 +102,17 @@
           <div class="weather-type" id="weatherType">-</div>
           <div class="weather-temp" id="weatherTemp">- ~ -</div>
           <div class="weather-wind" id="weatherWind">-</div>
+          <!-- 新增夜间天气行 -->
+          <div class="weather-night">
+            夜间：
+            <div class="weather-type-night" id="weatherNightType">-</div>
+            <div class="weather-wind-night" id="weatherNightWind">-</div>
+          </div>
           <div class="weather-aqi" id="weatherAqi">空气质量: -</div>
         </div>
+        <!-- 修改按钮为链接 -->
+        <a href="/weather.html" class="btn">查看天气预警→</a>
       </div>
-    </div>
-    <div class="card">
-      <h3 class="card-title">分栏2</h3>
-      <p class="card-text">中间中等宽度内容中间中等宽度内容</p>
-    </div>
-    <div class="card huge">
-      <h3 class="card-title">分栏3</h3>
-      <p class="card-text">右侧宽栏内容</p>
-    </div>
-    <div class="card big">
-      <h2 class="card-title">欢迎来到本网站</h2>
-      <p class="card-text">这是一个现代风格的网站设计示例</p>
     </div>
   </main>
 

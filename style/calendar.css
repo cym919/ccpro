@@ -1,0 +1,84 @@
+/* 日历卡片样式 */
+.calendar-card {
+    grid-column: span 2;
+    min-height: 400px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+}
+
+.calendar-day {
+    padding: 0.8rem;
+    text-align: center;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.2s;
+}
+
+.calendar-day.today {
+    background: var(--primary-color);
+    color: white;
+}
+
+.calendar-day.holiday {
+    background: #FF5252;
+    color: white;
+    position: relative;
+}
+
+.calendar-day.workday {
+    background: #FFD740;
+    color: #333;
+}
+
+/* 选中日期样式 */
+.calendar-day.selected {
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* 非当前月日期 */
+.calendar-day.empty {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 日历按钮样式优化 */
+.calendar-header .nav-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.calendar-header button {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+.calendar-header button:hover {
+    background: var(--primary-color);
+    border-color: transparent;
+}
+
+.calendar-header button:hover .nav-icon {
+    fill: var(--bg-color);
+}
+
+.calendar-header .nav-icon {
+    width: 18px;
+    height: 18px;
+    fill: var(--text-color);
+    vertical-align: middle;
+}

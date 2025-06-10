@@ -47,8 +47,8 @@
 
     <div class="nav-section">
       <div class="external-links">
-        <a href="#" class="external-link">
-          外部链接
+        <a href="https://gitcode.com/cym919/ccpro" class="external-link">
+          为项目点个Star⭐
           <span style="font-size: 0.8em">↗</span>
         </a>
         <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
@@ -70,24 +70,42 @@
       </div>
     </div>
     <div class="card">
-      <h3 class="card-title">分栏2</h3>
-      <p class="card-text">中间中等宽度内容中间中等宽度内容</p>
+      <h3 class="card-title">每日一言</h3>
+      <p class="card-text">曾几何时，我们做了世上那最柔情的人，为一朵花低眉，为一朵云驻足，为一滴雨感动。</p>
     </div>
     <div class="card">
-      <h3 class="card-title">分栏3</h3>
-      <p class="card-text">右侧宽栏内容</p>
+      <h3 class="card-title">公告</h3>
+      <p class="card-text">欢迎使用CCPro，这是一个集日历，时间，天气，热搜，随机图片一言为一体的网站</p>
     </div>
-    
+    <div class="card">
+      <h3 class="card-title">作者</h3>
+      <div class="author-container">
+        <a href="https://gitcode.com/cym919" class="author-item" target="_blank">
+          <img src="img/avatar@cym919.png" class="author-avatar" />
+          <span class="author-name">@cym919</span>
+        </a>
+        <!-- 添加第二个作者 -->
+        <a href="https://gitcode.com/fokete" class="author-item" target="_blank">
+          <img src="img/avatar@fokete.jpg" class="author-avatar" />
+          <span class="author-name">@fokete</span>
+        </a>
+      </div>
+    </div>
+
     <!-- 新增日历卡片 -->
     <div class="card calendar-card">
       <div class="calendar-header">
         <h3 class="card-title" id="monthYear"></h3>
         <div class="nav-buttons">
           <button onclick="changeMonth(-1)">
-            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+            <svg class="nav-icon" viewBox="0 0 24 24">
+              <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
+            </svg>
           </button>
           <button onclick="changeMonth(1)">
-            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            <svg class="nav-icon" viewBox="0 0 24 24">
+              <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+            </svg>
           </button>
         </div>
       </div>
@@ -113,6 +131,35 @@
         <!-- 修改按钮为链接 -->
         <a href="/weather.html" class="btn">查看天气预警→</a>
       </div>
+    </div>
+    <div class="card">
+      <h3 class="card-title">更新日志</h3>
+      <div class="changelog-container">
+        <div class="changelog-item">
+          <div class="changelog-header">
+            <span class="changelog-id">#003</span>
+            <span class="changelog-date">2025-01-03</span>
+          </div>
+          <div class="changelog-content">添加天气预警功能</div>
+        </div>
+        <div class="changelog-item">
+          <div class="changelog-header">
+            <span class="changelog-id">#002</span>
+            <span class="changelog-date">2025-01-02</span>
+          </div>
+          <div class="changelog-content">优化作者卡片布局</div>
+        </div>
+        <div class="changelog-item">
+          <div class="changelog-header">
+            <span class="changelog-id">#001</span>
+            <span class="changelog-date">2025-01-01</span>
+          </div>
+          <div class="changelog-content">项目初始版本发布</div>
+        </div>
+      </div>
+      <a href="/docs/changelog.html" class="changelog-more-btn">查看更多</a>
+    </div>
+    </div>
     </div>
   </main>
 

@@ -5,7 +5,7 @@ $file_path = __DIR__ . 'tips.servertxt';
 if (!file_exists($file_path)) {
     http_response_code(404);
     header('Content-Type: application/json');
-    echo json_encode(['code' => 404, 'msg' => '公告文件不存在']);
+    echo json_encode(['code' => 404, 'msg' => '公告获取失败']);
     exit;
 }
 

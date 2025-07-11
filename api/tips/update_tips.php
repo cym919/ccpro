@@ -19,7 +19,7 @@ if (!isset($_POST['content']) || !isset($_POST['uc'])) {
 $uc_file = __DIR__ . 'uc.servertxt';
 if (!file_exists($uc_file)) {
     http_response_code(500);
-    echo json_encode(['code' => 500, 'msg' => '验证文件不存在']);
+    echo json_encode(['code' => 500, 'msg' => '验证失败']);
     exit;
 }
 

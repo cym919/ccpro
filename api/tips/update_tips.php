@@ -19,14 +19,14 @@ if (!isset($_POST['content']) || !isset($_POST['uc'])) {
 $uc_file = __DIR__ . 'uc.servertxt';
 if (!file_exists($uc_file)) {
     http_response_code(500);
-    echo json_encode(['code' => 500, 'msg' => '验证文件不存在']);
+    echo json_encode(['code' => 500, 'msg' => '验证失败']);
     exit;
 }
 
 $correct_uc = trim(file_get_contents($uc_file));
 if ($_POST['uc'] !== $correct_uc) {
     http_response_code(403);
-    echo json_encode(['code' => 403, 'msg' => 'UC验证失败']);
+    echo json_encode(['code' => 403, 'msg' => '无权限']);
     exit;
 }
 
